@@ -1,0 +1,60 @@
+#Format:
+#   url: api request url (JSON)
+#   frequency: frequency at which data should be fetched in minutes
+#   prerequisites: 
+#       url: api request url (JSON)
+#       field: string of the required field from the above url
+
+test1:
+  url: http://api.erg.kcl.ac.uk/AirQuality/Hourly/MonitoringIndex/GroupName=London/Json
+  frequency: 60
+  format: json
+  
+test2:
+  url: https://api.tfl.gov.uk/BikePoint
+  frequency: 1440
+  format: json
+  
+test3:
+  url: https://api.tfl.gov.uk/Occupancy/BikePoints/{id}
+  frequency: 60
+  format: json
+  prerequisites:   
+    - url: https://api.tfl.gov.uk/BikePoint
+    - field: id
+  
+test4:
+  url: https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status
+  frequency: 3
+  format: json
+  
+test5:
+  url: https://api.tfl.gov.uk/line/mode/bus/status
+  frequency: 3
+  format: json
+  
+test6:
+  url: https://api.tfl.gov.uk/Occupancy/CarPark
+  frequency: 3 
+  format: json
+
+test7:
+  url: https://api.tfl.gov.uk/Occupancy/ChargeConnector
+  frequency: 3
+  format: json
+  
+test8:
+  url: https://api.tfl.gov.uk/Road/All/Disruption?stripContent=false
+  frequency: 360
+  format: json
+  
+  #most recent year supplied is 2017
+test9:
+    url: https://api.tfl.gov.uk/AccidentStats/{year}
+    frequency: 524160
+    format: json
+
+test10:
+    url:https://data.tfl.gov.uk/tfl/syndication/feeds/tims_feed.xml
+    frequency:   5
+    format: xml
